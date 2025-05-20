@@ -12,7 +12,11 @@ def valid_string_cpp(description):
     if description:
         # remove possible markdown/rst syntax, but add proper indent for cpp-header files.
         filtered_description = (
-            description.replace('\\', '\\\\').replace('`', '').replace('\n', '\\n    ')
+            description
+            .replace('\\', '\\\\')
+            .replace('`', '')
+            .replace('\n', '\\n    ')
+            .replace('"', '\\"')
         )
         return f'"{filtered_description}"'
     else:
