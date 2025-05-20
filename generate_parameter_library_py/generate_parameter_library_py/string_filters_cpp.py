@@ -12,8 +12,7 @@ def valid_string_cpp(description):
     if description:
         # remove possible markdown/rst syntax, but add proper indent for cpp-header files.
         filtered_description = (
-            description
-            .replace('\\', '\\\\')
+            description.replace('\\', '\\\\')
             .replace('`', '')
             .replace('\n', '\\n    ')
             .replace('"', '\\"')
@@ -34,6 +33,6 @@ def valid_string_python(description):
       str: The filtered string that is a valid Python string.
     """
     if description:
-        return description.replace('\n', '\\n    ').replace('"','\\"')
+        return description.replace('\n', '\\n    ').replace('"', '\\"')
     else:
         return ''
