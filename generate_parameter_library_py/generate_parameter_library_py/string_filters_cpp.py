@@ -34,6 +34,6 @@ def valid_string_python(description):
       str: The filtered string that is a valid Python string.
     """
     if description:
-        return description.replace('\n', '\\n    ')
+        return description.replace('\n', '\\n    ').replace('"','\\"')
     else:
         return ''
