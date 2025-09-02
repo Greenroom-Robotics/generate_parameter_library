@@ -68,7 +68,7 @@ def test_nested_map_parameter_names():
                 for line in param_name_lines:
                     assert (
                         '..' not in line
-                    ), f"Found double dots in parameter name: {line.strip()}"
+                    ), f'Found double dots in parameter name: {line.strip()}'
 
                 expected_patterns = [
                     'config_groups.{value_1}.max_value',
