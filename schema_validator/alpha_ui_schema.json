@@ -1,17 +1,236 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://raw.githubusercontent.com/Greenroom-Robotics/generate_parameter_library/main/alpha_ui_schema.json",
-  "title": "Alpha UI Schema for additional_constraints",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": true,
   "description": "Validates the JSON structure embedded in the additional_constraints string field for UI generation. Compatible with React JSON Schema Form with additional 'units' field for physical units.",
-  "type": "object",
+  "examples": [
+    {
+      "description": "Control loop frequency",
+      "maximum": 1000,
+      "minimum": 1,
+      "title": "Frequency",
+      "type": "number",
+      "units": "hertz"
+    },
+    {
+      "maximum": 10,
+      "minimum": 0,
+      "type": "number",
+      "units": "metersPerSecond"
+    },
+    {
+      "enum": [
+        "standby",
+        "navigation",
+        "take_over_the_world"
+      ],
+      "enumNames": [
+        "Standby Mode",
+        "Navigation Mode",
+        "World Domination Mode"
+      ],
+      "type": "string"
+    },
+    {
+      "maximum": 100,
+      "minimum": 0,
+      "multipleOf": 5,
+      "type": "integer"
+    },
+    {
+      "format": "date-time",
+      "type": "string"
+    }
+  ],
   "properties": {
+    "additionalProperties": {
+      "description": "Schema for additional properties or boolean (react-jsonschema-form)",
+      "oneOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "object"
+        }
+      ]
+    },
+    "allOf": {
+      "description": "All of these schemas must match (react-jsonschema-form)",
+      "items": {
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "anyOf": {
+      "description": "Any of these schemas can match (react-jsonschema-form)",
+      "items": {
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "const": {
+      "description": "Constant value (react-jsonschema-form)"
+    },
+    "default": {
+      "description": "Default value for the field (react-jsonschema-form)"
+    },
+    "dependencies": {
+      "additionalProperties": true,
+      "description": "Property dependencies (react-jsonschema-form)",
+      "type": "object"
+    },
+    "description": {
+      "description": "A description for the field (react-jsonschema-form)",
+      "type": "string"
+    },
+    "enum": {
+      "description": "Enumeration of allowed values (react-jsonschema-form)",
+      "items": {},
+      "type": "array"
+    },
+    "enumNames": {
+      "description": "Human-readable labels for enum values (react-jsonschema-form)",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "exclusiveMaximum": {
+      "description": "Exclusive maximum value for numbers (react-jsonschema-form)",
+      "type": "number"
+    },
+    "exclusiveMinimum": {
+      "description": "Exclusive minimum value for numbers (react-jsonschema-form)",
+      "type": "number"
+    },
+    "format": {
+      "description": "String format (date, time, email, uri, etc.) (react-jsonschema-form)",
+      "enum": [
+        "date",
+        "time",
+        "date-time",
+        "email",
+        "hostname",
+        "ipv4",
+        "ipv6",
+        "uri",
+        "uri-reference",
+        "uri-template",
+        "json-pointer",
+        "relative-json-pointer",
+        "regex",
+        "data-url",
+        "color"
+      ],
+      "type": "string"
+    },
+    "items": {
+      "description": "Schema for array items (react-jsonschema-form)",
+      "oneOf": [
+        {
+          "type": "object"
+        },
+        {
+          "items": {
+            "type": "object"
+          },
+          "type": "array"
+        }
+      ]
+    },
+    "max": {
+      "description": "Max value for numbers (react-jsonschema-form)",
+      "type": "number"
+    },
+    "maxItems": {
+      "description": "Maximum array length (react-jsonschema-form)",
+      "minimum": 0,
+      "type": "integer"
+    },
+    "maxLength": {
+      "description": "Maximum string length (react-jsonschema-form)",
+      "minimum": 0,
+      "type": "integer"
+    },
+    "maximum": {
+      "description": "Maximum value for numbers (react-jsonschema-form)",
+      "type": "number"
+    },
+    "min": {
+      "description": "Min value for numbers (react-jsonschema-form)",
+      "type": "number"
+    },
+    "minItems": {
+      "description": "Minimum array length (react-jsonschema-form)",
+      "minimum": 0,
+      "type": "integer"
+    },
+    "minLength": {
+      "description": "Minimum string length (react-jsonschema-form)",
+      "minimum": 0,
+      "type": "integer"
+    },
+    "minimum": {
+      "description": "Minimum value for numbers (react-jsonschema-form)",
+      "type": "number"
+    },
+    "multipleOf": {
+      "description": "Value must be a multiple of this number (react-jsonschema-form)",
+      "type": "number"
+    },
+    "not": {
+      "description": "Schema must not match (react-jsonschema-form)",
+      "type": "object"
+    },
+    "oneOf": {
+      "description": "One of these schemas must match (react-jsonschema-form)",
+      "items": {
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "pattern": {
+      "description": "Regular expression pattern for string validation (react-jsonschema-form)",
+      "type": "string"
+    },
+    "properties": {
+      "additionalProperties": true,
+      "description": "Object property schemas (react-jsonschema-form)",
+      "type": "object"
+    },
+    "readOnly": {
+      "description": "Field is read-only in the UI (react-jsonschema-form)",
+      "type": "boolean"
+    },
+    "required": {
+      "description": "List of required property names (react-jsonschema-form)",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "title": {
+      "description": "A title for the field (react-jsonschema-form)",
+      "type": "string"
+    },
     "type": {
-      "type": "string",
       "description": "The JSON Schema type for the parameter",
-      "enum": ["number", "string", "integer", "boolean", "array", "object", "null"]
+      "enum": [
+        "number",
+        "string",
+        "integer",
+        "boolean",
+        "array",
+        "object",
+        "null"
+      ],
+      "type": "string"
+    },
+    "uniqueItems": {
+      "description": "Whether array items must be unique (react-jsonschema-form)",
+      "type": "boolean"
     },
     "units": {
-      "type": "string",
       "description": "Physical units for the parameter value. Custom extension for unit conversion support. Based on unitConversion.ts from alpha schema-form.",
       "enum": [
         "degrees",
@@ -48,210 +267,17 @@
         "secondsPeriod",
         "millisecondsPeriod",
         "milliSecondsPeriod"
-      ]
-    },
-    "title": {
-      "type": "string",
-      "description": "A title for the field (react-jsonschema-form)"
-    },
-    "description": {
-      "type": "string",
-      "description": "A description for the field (react-jsonschema-form)"
-    },
-    "default": {
-      "description": "Default value for the field (react-jsonschema-form)"
-    },
-    "enum": {
-      "type": "array",
-      "description": "Enumeration of allowed values (react-jsonschema-form)",
-      "items": {}
-    },
-    "enumNames": {
-      "type": "array",
-      "description": "Human-readable labels for enum values (react-jsonschema-form)",
-      "items": {
-        "type": "string"
-      }
-    },
-    "const": {
-      "description": "Constant value (react-jsonschema-form)"
-    },
-    "min": {
-      "type": "number",
-      "description": "Min value for numbers (react-jsonschema-form)"
-    },
-    "max": {
-      "type": "number",
-      "description": "Max value for numbers (react-jsonschema-form)"
-    },
-    "minimum": {
-      "type": "number",
-      "description": "Minimum value for numbers (react-jsonschema-form)"
-    },
-    "maximum": {
-      "type": "number",
-      "description": "Maximum value for numbers (react-jsonschema-form)"
-    },
-    "exclusiveMinimum": {
-      "type": "number",
-      "description": "Exclusive minimum value for numbers (react-jsonschema-form)"
-    },
-    "exclusiveMaximum": {
-      "type": "number",
-      "description": "Exclusive maximum value for numbers (react-jsonschema-form)"
-    },
-    "multipleOf": {
-      "type": "number",
-      "description": "Value must be a multiple of this number (react-jsonschema-form)"
-    },
-    "minLength": {
-      "type": "integer",
-      "description": "Minimum string length (react-jsonschema-form)",
-      "minimum": 0
-    },
-    "maxLength": {
-      "type": "integer",
-      "description": "Maximum string length (react-jsonschema-form)",
-      "minimum": 0
-    },
-    "pattern": {
-      "type": "string",
-      "description": "Regular expression pattern for string validation (react-jsonschema-form)"
-    },
-    "format": {
-      "type": "string",
-      "description": "String format (date, time, email, uri, etc.) (react-jsonschema-form)",
-      "enum": [
-        "date",
-        "time",
-        "date-time",
-        "email",
-        "hostname",
-        "ipv4",
-        "ipv6",
-        "uri",
-        "uri-reference",
-        "uri-template",
-        "json-pointer",
-        "relative-json-pointer",
-        "regex",
-        "data-url",
-        "color"
-      ]
-    },
-    "items": {
-      "description": "Schema for array items (react-jsonschema-form)",
-      "oneOf": [
-        {"type": "object"},
-        {
-          "type": "array",
-          "items": {"type": "object"}
-        }
-      ]
-    },
-    "minItems": {
-      "type": "integer",
-      "description": "Minimum array length (react-jsonschema-form)",
-      "minimum": 0
-    },
-    "maxItems": {
-      "type": "integer",
-      "description": "Maximum array length (react-jsonschema-form)",
-      "minimum": 0
-    },
-    "uniqueItems": {
-      "type": "boolean",
-      "description": "Whether array items must be unique (react-jsonschema-form)"
-    },
-    "properties": {
-      "type": "object",
-      "description": "Object property schemas (react-jsonschema-form)",
-      "additionalProperties": true
-    },
-    "required": {
-      "type": "array",
-      "description": "List of required property names (react-jsonschema-form)",
-      "items": {
-        "type": "string"
-      }
-    },
-    "additionalProperties": {
-      "description": "Schema for additional properties or boolean (react-jsonschema-form)",
-      "oneOf": [
-        {"type": "boolean"},
-        {"type": "object"}
-      ]
-    },
-    "oneOf": {
-      "type": "array",
-      "description": "One of these schemas must match (react-jsonschema-form)",
-      "items": {
-        "type": "object"
-      }
-    },
-    "anyOf": {
-      "type": "array",
-      "description": "Any of these schemas can match (react-jsonschema-form)",
-      "items": {
-        "type": "object"
-      }
-    },
-    "allOf": {
-      "type": "array",
-      "description": "All of these schemas must match (react-jsonschema-form)",
-      "items": {
-        "type": "object"
-      }
-    },
-    "not": {
-      "type": "object",
-      "description": "Schema must not match (react-jsonschema-form)"
-    },
-    "dependencies": {
-      "type": "object",
-      "description": "Property dependencies (react-jsonschema-form)",
-      "additionalProperties": true
-    },
-    "readOnly": {
-      "type": "boolean",
-      "description": "Field is read-only in the UI (react-jsonschema-form)"
+      ],
+      "type": "string"
     },
     "writeOnly": {
-      "type": "boolean",
-      "description": "Field is write-only (not displayed after submission) (react-jsonschema-form)"
+      "description": "Field is write-only (not displayed after submission) (react-jsonschema-form)",
+      "type": "boolean"
     }
   },
-  "required": ["type"],
-  "additionalProperties": true,
-  "examples": [
-    {
-      "type": "number",
-      "units": "hertz",
-      "title": "Frequency",
-      "description": "Control loop frequency",
-      "minimum": 1,
-      "maximum": 1000
-    },
-    {
-      "type": "number",
-      "units": "metersPerSecond",
-      "minimum": 0,
-      "maximum": 10
-    },
-    {
-      "type": "string",
-      "enum": ["standby", "navigation", "take_over_the_world"],
-      "enumNames": ["Standby Mode", "Navigation Mode", "World Domination Mode"]
-    },
-    {
-      "type": "integer",
-      "multipleOf": 5,
-      "minimum": 0,
-      "maximum": 100
-    },
-    {
-      "type": "string",
-      "format": "date-time"
-    }
-  ]
+  "required": [
+    "type"
+  ],
+  "title": "Alpha UI Schema for additional_constraints",
+  "type": "object"
 }

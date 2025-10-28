@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "generate-parameter-library-schema-validator"
+version = "0.1.0"
+description = "Schema validator for generate_parameter_library YAML files"
+authors = [
+    {name = "Greenroom Robotics"}
+]
+readme = "README.md"
+requires-python = ">=3.6"
+dependencies = [
+    "pyyaml>=5.0",
+    "jsonschema>=3.0",
+]
+
+[project.scripts]
+validate-parameter-schema = "validate_schema:main"
+
+[tool.setuptools]
+py-modules = ["validate_schema"]
