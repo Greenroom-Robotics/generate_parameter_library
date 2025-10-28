@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "generate-parameter-library-hooks"
+version = "0.1.0"
+description = "Pre-commit hooks for generate_parameter_library"
+authors = [
+    {name = "Greenroom Robotics"}
+]
+requires-python = ">=3.6"
+dependencies = [
+    "pyyaml>=5.0",
+    "jsonschema>=3.0",
+]
+
+[tool.setuptools]
+packages = []

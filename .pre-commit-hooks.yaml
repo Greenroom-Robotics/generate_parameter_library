@@ -1,8 +1,7 @@
 - id: validate-parameter-schema
   name: Validate ROS2 PickNikRobotics Generate Parameter Library Schema
   description: Validates generate_parameter_library YAML files against JSON schema
-  entry: validate_schema.py
+  entry: schema_validator/validate_schema.py
   language: python
   types: [yaml]
   files: .*parameters\.yaml$
-  additional_dependencies: ['./schema_validator']
