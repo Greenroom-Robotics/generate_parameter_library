@@ -20,4 +20,8 @@ dependencies = [
 validate-parameter-schema = "validate_schema:main"
 
 [tool.setuptools]
-py-modules = ["validate_schema"]
+py-modules = ["validate_schema", "__main__"]
+include-package-data = true
+
+[tool.setuptools.package-data]
+"." = ["*.json"]
