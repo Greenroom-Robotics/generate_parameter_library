@@ -267,20 +267,18 @@ def test_control_modes_nested_structures():
                     len(entry_access_lines) > 0
                 ), 'Should access nested parameters via entry variable'
 
-                # Verify no direct access to __map_control_mode_ids
+                # Verify no direct access to __map_control_mode_ids in actual code
+                # (error messages can reference the YAML path, but code should not access __map_ attributes)
                 wrong_access_lines = [
                     line
                     for line in lines
                     if 'control_modes.__map_control_mode_ids' in line
-                ]
-                # Filter out comments
-                wrong_access_lines = [
-                    line
-                    for line in wrong_access_lines
-                    if not line.strip().startswith('#')
+                    and not line.strip().startswith('#')  # Ignore comments
+                    and 'InvalidParameterValueException'
+                    not in line  # Ignore error messages
                 ]
                 assert len(wrong_access_lines) == 0, (
-                    f'Should not directly access __map_control_mode_ids. Found:\n'
+                    f'Should not directly access __map_control_mode_ids in code. Found:\n'
                     + '\n'.join(wrong_access_lines)
                 )
 
