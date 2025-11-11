@@ -220,7 +220,8 @@ def test_control_modes_nested_structures():
                 # Check that we're using get_entry correctly
                 assert (
                     'updated_params.control_modes.get_entry(value_1)' in generated_code
-                    or 'entry = updated_params.control_modes.get_entry(value_1)' in generated_code
+                    or 'entry = updated_params.control_modes.get_entry(value_1)'
+                    in generated_code
                 ), 'Should use get_entry to access mapped parameters'
 
                 # Get all parameter name lines
@@ -245,9 +246,10 @@ def test_control_modes_nested_structures():
 
                 for pattern in expected_patterns:
                     pattern_found = any(pattern in line for line in param_name_lines)
-                    assert (
-                        pattern_found
-                    ), f"Expected pattern '{pattern}' not found in generated code.\nParam lines:\n" + '\n'.join(param_name_lines[:5])
+                    assert pattern_found, (
+                        f"Expected pattern '{pattern}' not found in generated code.\nParam lines:\n"
+                        + '\n'.join(param_name_lines[:5])
+                    )
 
                 # Ensure no double dots in parameter names
                 for line in param_name_lines:
@@ -257,7 +259,8 @@ def test_control_modes_nested_structures():
 
                 # Check that we're accessing nested parameters via entry, not via __map_
                 entry_access_lines = [
-                    line for line in lines
+                    line
+                    for line in lines
                     if 'entry.' in line and ('fixed_heading' in line)
                 ]
                 assert (
@@ -266,17 +269,20 @@ def test_control_modes_nested_structures():
 
                 # Verify no direct access to __map_control_mode_ids
                 wrong_access_lines = [
-                    line for line in lines
+                    line
+                    for line in lines
                     if 'control_modes.__map_control_mode_ids' in line
                 ]
                 # Filter out comments
                 wrong_access_lines = [
-                    line for line in wrong_access_lines
+                    line
+                    for line in wrong_access_lines
                     if not line.strip().startswith('#')
                 ]
-                assert (
-                    len(wrong_access_lines) == 0
-                ), f'Should not directly access __map_control_mode_ids. Found:\n' + '\n'.join(wrong_access_lines)
+                assert len(wrong_access_lines) == 0, (
+                    f'Should not directly access __map_control_mode_ids. Found:\n'
+                    + '\n'.join(wrong_access_lines)
+                )
 
             finally:
                 # Clean up temporary files
