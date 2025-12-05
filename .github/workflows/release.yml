@@ -53,7 +53,7 @@ jobs:
           - runner: 2vcpu-ubuntu-2404-arm
             arch: arm64
 
-    name: Build - ${{ matrix.job.arch }} - ${{ matrix.job.ros_distro }}
+    name: Build - ${{ matrix.job.arch }} - ${{ matrix\.ros_distro }}
     runs-on: ${{ matrix.job.runner }}
 
     steps:
@@ -67,7 +67,7 @@ jobs:
           package_dir: ./
           package: ${{ github.event.inputs.package }}
           arch: ${{ matrix.job.arch }}
-          ros_distro: ${{ matrix.job.ros_distro }}
+          ros_distro: ${{ matrix\.ros_distro }}
           github_release: false
           public: false
           changelog: false
